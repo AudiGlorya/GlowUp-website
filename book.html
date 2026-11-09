@@ -3,13 +3,592 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book Now — GlowUp</title>
+
+<title>Book Now — Audelles | Nairobi beauty</title>
+
 <link rel="stylesheet" href="GlowUp.css">
+
+<style>
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+
+html{
+  width:100%;
+  overflow-x:hidden;
+}
+
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+/*HEADER RESPONSIVENESS */
+
+header{
+  width:100%;
+  max-width:100%;
+  padding-left:clamp(16px, 4vw, 60px);
+  padding-right:clamp(16px, 4vw, 60px);
+}
+
+header .logo{
+  white-space:nowrap;
+}
+
+header .btn{
+  white-space:nowrap;
+}
+
+/* =====================================================
+   PAGE BANNER
+===================================================== */
+
+.page-banner{
+  width:100%;
+  max-width:100%;
+  padding-left:20px;
+  padding-right:20px;
+  overflow:hidden;
+}
+
+.page-banner h1{
+  margin-left:auto;
+  margin-right:auto;
+  max-width:100%;
+  overflow-wrap:break-word;
+}
+
+/* =====================================================
+   MAIN WRAPPER
+===================================================== */
+
+.wrap{
+  width:100%;
+  max-width:100%;
+  padding-left:clamp(16px, 4vw, 40px);
+  padding-right:clamp(16px, 4vw, 40px);
+  overflow:visible;
+}
+
+.wrap section{
+  width:100%;
+  max-width:100%;
+}
+
+/* =====================================================
+   BOOKING FORM
+   ALWAYS ONE COLUMN
+===================================================== */
+
+.booking-card{
+  width:min(100%, 620px) !important;
+
+  margin-left:auto !important;
+  margin-right:auto !important;
+
+  display:flex !important;
+  flex-direction:column !important;
+
+  align-items:stretch !important;
+
+  gap:0 !important;
+
+  padding:clamp(22px, 4vw, 42px) !important;
+
+  overflow:visible !important;
+}
+
+/* =====================================================
+   EACH FIELD
+===================================================== */
+
+.booking-card .field{
+  width:100% !important;
+
+  display:flex !important;
+  flex-direction:column !important;
+
+  align-items:stretch !important;
+  justify-content:flex-start !important;
+
+  gap:8px !important;
+
+  margin:0 0 20px 0 !important;
+
+  min-width:0 !important;
+}
+
+/* Label text */
+
+.booking-card .field{
+  font-size:clamp(0.85rem, 1.8vw, 0.95rem);
+  line-height:1.3;
+}
+
+/* =====================================================
+   ALL INPUTS + SELECTS
+===================================================== */
+
+.booking-card input,
+.booking-card select{
+  display:block !important;
+
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+
+  height:52px;
+
+  padding:0 16px !important;
+
+  border-radius:10px;
+
+  font-family:inherit;
+  font-size:clamp(0.85rem, 2vw, 0.95rem);
+
+  text-align:left !important;
+
+  outline:none;
+
+  appearance:auto;
+}
+
+/* WhatsApp field */
+
+.booking-card #whatsapp{
+  background:rgb(248, 221, 221) !important;
+  border:none !important;
+}
+
+/* =====================================================
+   SELECT FIELDS
+===================================================== */
+
+.booking-card select{
+  background-color:transparent !important;
+  cursor:pointer;
+}
+
+/* Remove inline right alignment */
+
+.booking-card select,
+.booking-card input{
+  text-align:left !important;
+}
+
+/* =====================================================
+   DATE INPUT
+===================================================== */
+
+.booking-card input[type="date"]{
+  width:100% !important;
+  max-width:100% !important;
+}
+
+/* =====================================================
+   BOOK BUTTON
+===================================================== */
+
+.booking-card > button.btn{
+  width:100% !important;
+  max-width:100% !important;
+
+  min-height:52px;
+
+  margin:4px 0 0 0 !important;
+
+  align-self:stretch !important;
+
+  white-space:nowrap;
+
+  font-size:0.95rem;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+  width:100%;
+  max-width:100%;
+  padding-left:20px;
+  padding-right:20px;
+  text-align:center;
+  overflow:hidden;
+}
+
+footer p,
+footer h2{
+  max-width:100%;
+  overflow-wrap:break-word;
+}
+
+/* =====================================================
+   TABLETS
+===================================================== */
+
+@media (min-width:769px) and (max-width:1024px){
+
+  header{
+    padding-left:28px;
+    padding-right:28px;
+  }
+
+  .booking-card{
+    width:min(100%, 600px) !important;
+    padding:32px !important;
+  }
+
+  .booking-card .field{
+    margin-bottom:22px !important;
+  }
+
+  .booking-card input,
+  .booking-card select{
+    height:54px;
+  }
+
+}
+
+/* =====================================================
+   SMALL TABLETS / LARGE PHONES
+===================================================== */
+
+@media (min-width:481px) and (max-width:768px){
+
+  header{
+    padding-left:20px;
+    padding-right:20px;
+  }
+
+  .booking-card{
+    width:min(100%, 560px) !important;
+    padding:28px !important;
+  }
+
+  .booking-card .field{
+    margin-bottom:19px !important;
+  }
+
+  .booking-card input,
+  .booking-card select{
+    height:52px;
+  }
+
+}
+
+/* =====================================================
+   PHONES
+===================================================== */
+
+@media (max-width:480px){
+
+  header{
+    padding:15px 16px !important;
+
+    flex-wrap:wrap !important;
+
+    gap:12px !important;
+  }
+
+  header .logo{
+    font-size:1.1rem;
+  }
+
+  header .links{
+    width:100%;
+    order:3;
+  }
+
+  header .links ul{
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px 16px;
+    padding:0;
+    margin:0;
+  }
+
+  header .links li{
+    white-space:nowrap;
+  }
+
+  header > .btn{
+    font-size:0.75rem;
+    padding:10px 15px;
+  }
+
+  .page-banner{
+    padding-top:25px;
+    padding-bottom:20px;
+  }
+
+  .page-banner h1{
+    font-size:clamp(2rem, 10vw, 2.7rem);
+  }
+
+  .wrap{
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  .booking-card{
+    width:100% !important;
+
+    padding:22px 17px !important;
+
+    border-radius:18px !important;
+  }
+
+  .booking-card .field{
+    margin-bottom:18px !important;
+    gap:7px !important;
+  }
+
+  .booking-card input,
+  .booking-card select{
+    height:50px;
+    padding-left:13px !important;
+    padding-right:13px !important;
+    font-size:0.86rem;
+    border-radius:9px;
+  }
+
+  .booking-card > button.btn{
+    min-height:50px;
+    font-size:0.88rem;
+  }
+
+  footer{
+    padding:45px 18px 30px;
+  }
+
+  footer h2{
+    font-size:1.5rem !important;
+  }
+
+}
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width:319px){
+
+  header{
+    padding:12px 10px !important;
+  }
+
+  header .logo{
+    font-size:0.95rem;
+  }
+
+  header .links ul{
+    gap:7px 9px;
+  }
+
+  header .links a{
+    font-size:0.72rem;
+  }
+
+  header > .btn{
+    font-size:0.68rem;
+    padding:8px 11px;
+  }
+
+  .page-banner{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .page-banner .eyebrow{
+    font-size:0.68rem;
+  }
+
+  .page-banner h1{
+    font-size:1.85rem;
+  }
+
+  .wrap{
+    padding-left:9px;
+    padding-right:9px;
+  }
+
+  .booking-card{
+    padding:17px 12px !important;
+    border-radius:15px !important;
+  }
+
+  .booking-card .field{
+    margin-bottom:15px !important;
+    gap:6px !important;
+  }
+
+  .booking-card .field{
+    font-size:0.78rem;
+  }
+
+  .booking-card input,
+  .booking-card select{
+    height:46px;
+    padding-left:10px !important;
+    padding-right:8px !important;
+    font-size:0.76rem;
+  }
+
+  .booking-card > button.btn{
+    min-height:46px;
+    font-size:0.78rem;
+  }
+
+  footer{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  footer h2{
+    font-size:1.3rem !important;
+  }
+
+  footer p{
+    font-size:0.78rem;
+  }
+
+}
+
+/* =====================================================
+   EXTREMELY SMALL DEVICES
+===================================================== */
+
+@media (max-width:279px){
+
+  .wrap{
+    padding-left:6px;
+    padding-right:6px;
+  }
+
+  .booking-card{
+    padding:14px 9px !important;
+  }
+
+  .booking-card input,
+  .booking-card select{
+    height:43px;
+    font-size:0.7rem;
+  }
+
+  .booking-card .field{
+    font-size:0.72rem;
+  }
+
+  .booking-card > button.btn{
+    min-height:43px;
+    font-size:0.72rem;
+  }
+
+}
+
+/* =====================================================
+   ACCESSIBILITY / TOUCH
+===================================================== */
+
+.booking-card input,
+.booking-card select,
+.booking-card button{
+  touch-action:manipulation;
+}
+
+.booking-card input:focus,
+.booking-card select:focus{
+  outline:none;
+}
+
+/* Prevent long text from breaking layout */
+
+.booking-card *,
+header *,
+footer *{
+  max-width:100%;
+}
+
+/* =====================================================
+   SUBTLE DIVIDERS BETWEEN BOOKING FIELDS
+===================================================== */
+
+.booking-card .field {
+  padding-bottom:20px !important;
+  margin-bottom:20px !important;
+
+  border-bottom:3px solid rgba(80, 55, 55, 0.16);
+}
+
+/* Keep divider away from final button */
+
+.booking-card .field:last-of-type {
+  border-bottom:none;
+  padding-bottom:0 !important;
+  margin-bottom:18px !important;
+}
+nav ul {
+  display:none !important;
+}
+.btn {
+  margin-left: 80px !important;
+}
+@media(max-width:400px) {
+  .page-banner {
+    width: 100%;
+    text-align: center;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .page-banner span,
+  .page-banner h1 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: center;
+  }
+  .btn {
+  margin-left: 80px !important;
+}
+@media (max-width: 400px) {
+    header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .logo {
+        flex-shrink: 0 !important;
+    }
+
+    .btn nav-book {
+        margin-left: 50px !important;
+        margin-right: 0 !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+ }
+}
+</style>
+
 </head>
 <body>
 
-<header>
-  <a href="GlowUp.html" class="logo">✿ GlowUp <span>✦</span></a>
+ <header>
+
+  <a href="GlowUp.html" class="logo">
+    ✿ Audelles <span>✦</span>
+  </a>
+
   <nav class="links">
     <ul>
       <li><a href="GlowUp.html">Home</a></li>
@@ -19,75 +598,336 @@
       <li><a href="book.html" class="active">Book Now</a></li>
     </ul>
   </nav>
-  <a href="book.html" class="btn">Book Now +</a>
-</header>
 
-<div class="page-banner" style="text-align:center;">
-  <span class="eyebrow">Let's Book</span>
-  <h1>Your <em>Glow</em> ♡</h1>
-</div>
+  <a href="book.html" class="btn">
+    Book Now +
+  </a>
+
+ </header>
+
+
+ <div class="page-banner" style="text-align:center;">
+
+  <span class="eyebrow">
+    Let's Book
+  </span>
+
+  <h1>
+    Your <em>Glow</em> ♡
+  </h1>
+
+ </div>
+
 
 <div class="wrap">
+
   <section style="padding-top:0;">
-    <form class="booking-card" onsubmit="alert('Thanks! We will confirm your booking shortly.'); return false;">
+
+    <form class="booking-card" id="bookingForm">
+
+      <!-- WHATSAPP -->
+
       <label class="field">
+
         WhatsApp contact
-        <input type="text" style="border:none;background:rgb(248, 221, 221);text-align:right;">
-        </label>
-      <label class="field">
-        Nail Care 
-        <select style="border:none;background:transparent;text-align:right;">
-        <option>Manicure</option>
-        <option>Pedicure</option>
-        <option>N/A</option>
-        </select>
+
+        <input
+          type="text"
+          id="whatsapp"
+          name="whatsapp"
+          required
+          placeholder="Enter WhatsApp number"
+          style="border:none;background:rgb(248, 221, 221);text-align:right;"
+        >
+
       </label>
+
+
+      <!-- EMAIL -->
+
       <label class="field">
+
+        Email Address
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="Enter your email"
+          autocomplete="email"
+          style="border:none;background:transparent;text-align:right;"
+        >
+
+      </label>
+
+
+      <!-- NAIL CARE -->
+
+      <label class="field">
+
+        Nail Care
+
+        <select
+          id="nailCare"
+          name="nailCare"
+          style="border:none;background:transparent;text-align:right;"
+        >
+
+          <option value="N/A" selected>N/A</option>
+
+          <option value="Manicure">
+            Manicure
+          </option>
+
+          <option value="Pedicure">
+            Pedicure
+          </option>
+
+        </select>
+
+      </label>
+
+
+      <!-- SERVICE -->
+
+      <label class="field">
+
         Select Service
-        <select style="border:none;background:transparent;text-align:right;">
-          <option>Tips</option>
-          <option>Plain Gel</option>
-          <option>Builder Gel Overlay</option>
-          <option>Polygel Overlay</option>
-          <option>Acrylics</option>
-          <option>Builder Gel Extensions</option>
-          <option>Polygel Extensions</option>
-          <option>N/A</option>
+
+        <select
+          id="service"
+          name="service"
+          style="border:none;background:transparent;text-align:right;"
+        >
+
+          <option value="N/A" selected>N/A</option>
+
+          <option value="Tips">
+            Tips
+          </option>
+
+          <option value="Plain Gel">
+            Plain Gel
+          </option>
+
+          <option value="Builder Gel Overlay">
+            Builder Gel Overlay
+          </option>
+
+          <option value="Polygel Overlay">
+            Polygel Overlay
+          </option>
+
+          <option value="Acrylics">
+            Acrylics
+          </option>
+
+          <option value="Builder Gel Extensions">
+            Builder Gel Extensions
+          </option>
+
+          <option value="Polygel Extensions">
+            Polygel Extensions
+          </option>
+
         </select>
+
       </label>
+
+
+      <!-- LASHES -->
+
       <label class="field">
-        Lash Sets 
-        <select style="border:none;background:transparent;text-align:right;">
-        <option>Clusters</option>
-        <option>Classic Extensions</option>
-        <option>Hybrid Extensions</option>
-        <option>Volume Extensions</option>
-        <option>N/A</option>
+
+        Lash Sets
+
+        <select
+          id="lashSet"
+          name="lashSet"
+          style="border:none;background:transparent;text-align:right;"
+        >
+
+          <option value="N/A" selected>N/A</option>
+
+          <option value="Clusters">
+            Clusters
+          </option>
+
+          <option value="Classic Extensions">
+            Classic Extensions
+          </option>
+
+          <option value="Hybrid Extensions">
+            Hybrid Extensions
+          </option>
+
+          <option value="Volume Extensions">
+            Volume Extensions
+          </option>
+
         </select>
-        </label>
+
+      </label>
+
+
+      <!-- DATE -->
+
       <label class="field">
+
         Select Date
-        <input type="date" style="border:none;background:transparent;text-align:right;">
+
+        <input
+          type="date"
+          id="date"
+          name="date"
+          required
+          min=""
+          style="border:none;background:transparent;text-align:right;"
+        >
+
       </label>
+
+
+      <!-- TIME -->
+
       <label class="field">
+
         Select Time
-        <input type="time" style="border:none;background:transparent;text-align:right;">
+
+        <select
+          id="time"
+          name="time"
+          required
+          style="border:none;background:transparent;text-align:right;"
+        >
+
+          <option value="">
+            Choose time
+          </option>
+
+        </select>
+
       </label>
-      <button type="submit" class="btn">Book Now +</button>
+
+
+      <!-- SUBMIT -->
+
+      <button type="submit" class="btn" id="submitButton">
+        Book Now +
+      </button>
+
     </form>
+
   </section>
+
 </div>
 
-<footer>
-  <p class="script">self care isn't selfish,</p>
-  <h2 style="font-size:1.8rem;">it's necessary.</h2>
-  <p>We can't wait to be part of your glow journey.</p>
-  <div class="socials">
-    <a href="#">IG</a>
-    <a href="#">TT</a>
-    <a href="#">WA</a>
-  </div>
-</footer>
 
+<footer>
+
+  <p class="script">
+    self care isn't selfish,
+  </p>
+
+  <h2>
+    it's necessary.
+  </h2>
+
+  <p>
+    We can't wait to be part of your glow journey.
+  </p>
+
+  <div class="footer-socials">
+
+    <!-- Instagram -->
+
+    <a
+      href="https://www.instagram.com/_mac.audi/"
+      target="_blank"
+      rel="noopener"
+      aria-label="Instagram"
+    >
+
+      <svg viewBox="0 0 24 24">
+
+        <rect
+          x="3"
+          y="3"
+          width="18"
+          height="18"
+          rx="5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+
+        <circle
+          cx="12"
+          cy="12"
+          r="4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+
+        <circle
+          cx="17.3"
+          cy="6.7"
+          r="1.1"
+          fill="currentColor"
+        />
+
+      </svg>
+
+    </a>
+
+
+    <!-- WhatsApp -->
+
+    <a
+      href="https://wa.me/254710868500"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+    >
+
+      <svg viewBox="0 0 24 24">
+
+        <path
+          fill="currentColor"
+          d="M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3zm0 1.8a7.2 7.2 0 016 11.2l-.3.5.6 2.2-2.3-.6-.5.3A7.2 7.2 0 1112 4.8zm-3.4 3.6c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.1 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3l-1.8-.9c-.2-.1-.4-.1-.6.1l-.7.9c-.1.1-.3.2-.5.1-.3-.1-1.2-.5-2.2-1.4-.8-.7-1.3-1.6-1.5-1.9-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.5-.6-.5h-.2z"
+        />
+
+      </svg>
+
+    </a>
+
+
+    <!-- TikTok -->
+
+    <a
+      href="https://www.tiktok.com/@_nailsLash"
+      target="_blank"
+      rel="noopener"
+      aria-label="TikTok"
+    >
+
+      <svg viewBox="0 0 24 24">
+
+        <path
+          fill="currentColor"
+          d="M14 3h2.2c.2 1.5 1.3 2.7 3.1 2.9v2.2c-1.2 0-2.3-.4-3.1-1v6.6c0 2.9-2.3 5.3-5.3 5.3S5.6 16.6 5.6 13.7c0-2.7 2-4.9 4.6-5.2v2.3a2.9 2.9 0 102.9 2.9V3z"
+        />
+
+      </svg>
+
+    </a>
+
+  </div>
+
+</footer>
+<script src="bk.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </body>
 </html>

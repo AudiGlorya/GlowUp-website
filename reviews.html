@@ -1,79 +1,302 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reviews — GlowUp</title>
-<link rel="stylesheet" href="GlowUp.css">
-</head>
-<body>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Reviews — Audelles | Nairobi beauty</title>  
+<link rel="stylesheet" href="GlowUp.css">  <style>  
+  .review-form-card {  
+    background: #fff;  
+    padding: 30px;  
+    border-radius: 18px;  
+    margin-bottom: 40px;  
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);  
+  }  
+  
+  .review-form-card h2 {  
+    margin-top: 0;  
+    color: #5c4f47;  
+  }  
+  
+  .review-field {  
+    margin-bottom: 20px;  
+  }  
+  
+  .review-field label {  
+    display: block;  
+    margin-bottom: 8px;  
+    color: #5c4f47;  
+    font-weight: 600;  
+  }  
+  
+  .review-field input,  
+  .review-field textarea {  
+    width: 100%;  
+    box-sizing: border-box;  
+    padding: 13px;  
+    border: 1px solid #ead6d1;  
+    border-radius: 10px;  
+    background: #fffafa;  
+    font-family: inherit;  
+    font-size: 15px;  
+    outline: none;  
+  }  
+  
+  .review-field textarea {  
+    min-height: 120px;  
+    resize: vertical;  
+  }  
+  
+  .review-field input:focus,  
+  .review-field textarea:focus {  
+    border-color: #c98a6b;  
+  }  
+  
+  .star-rating {  
+    display: flex;  
+    gap: 5px;  
+    margin-top: 5px;  
+  }  
+  
+  .star-rating button {  
+    border: none;  
+    background: transparent;  
+    font-size: 30px;  
+    color: #d8c9c3;  
+    cursor: pointer;  
+    padding: 0;  
+  }  
+  
+  .star-rating button.selected {  
+    color: #c98a6b;  
+  }  
+  
+  .submit-review {  
+    border: none;  
+    cursor: pointer;  
+  }  
+  
+  .reviews-loading {  
+    text-align: center;  
+    color: #7a6a61;  
+    padding: 30px;  
+  }  
+  
+  .no-reviews {  
+    text-align: center;  
+    color: #7a6a61;  
+    padding: 30px;  
+  }  
+  
+  @media (max-width: 768px) {  
+    .services-grid {  
+      grid-template-columns: 1fr !important;  
+    }  
+  
+    .review-form-card {  
+      padding: 22px;  
+    }  
+  }  
+</style>  </head>  <body>  <header>  
+  <a href="GlowUp.html" class="logo">✿ Audelles <span>✦</span></a>    <nav class="links">  
+    <ul>  
+      <li><a href="GlowUp.html">Home</a></li>  
+      <li><a href="services.html">Services</a></li>  
+      <li><a href="gallery.html">Gallery</a></li>  
+      <li><a href="reviews.html" class="active">Reviews</a></li>  
+      <li><a href="book.html">Book Now</a></li>  
+    </ul>  
+  </nav>  <a href="book.html" class="btn">Book Now +</a>
 
-<header>
-  <a href="GlowUp.html" class="logo">✿ GlowUp <span>✦</span></a>
-  <nav class="links">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="reviews.html" class="active">Reviews</a></li>
-      <li><a href="book.html">Book Now</a></li>
-    </ul>
-  </nav>
-  <a href="book.html" class="btn">Book Now +</a>
-</header>
+</header>  <div class="page-banner">  
+  <span class="eyebrow">Client Love</span>  
+  <h1>Real girls. <em>Real reviews.</em></h1>  
+</div>  <div class="wrap">    <!-- ========================= -->    <!-- REVIEW FORM -->    <!-- ========================= -->    <section style="padding-top:0;">  <div class="review-form-card">  
 
-<div class="page-banner">
-  <span class="eyebrow">Client Love</span>
-  <h1>Real girls. <em>Real reviews.</em></h1>
+  <h2>Share your GlowUp experience ♡</h2>  
+
+  <form id="reviewForm">  
+
+    <div class="review-field">  
+
+      <label for="reviewName">  
+        Your name  
+      </label>  
+
+      <input  
+        type="text"  
+        id="reviewName"  
+        placeholder="Enter your name"  
+        required  
+      >  
+
+    </div>  
+
+
+    <div class="review-field">  
+
+      <label>  
+        Your rating  
+      </label>  
+
+      <div  
+        class="star-rating"  
+        id="starRating"  
+      >  
+
+        <button type="button" data-rating="1">★</button>  
+        <button type="button" data-rating="2">★</button>  
+        <button type="button" data-rating="3">★</button>  
+        <button type="button" data-rating="4">★</button>  
+        <button type="button" data-rating="5">★</button>  
+
+      </div>  
+
+      <input  
+        type="hidden"  
+        id="rating"  
+        value=""  
+      >  
+
+    </div>  
+
+
+    <div class="review-field">  
+
+      <label for="reviewText">  
+        Your review  
+      </label>  
+
+      <textarea  
+        id="reviewText"  
+        placeholder="Tell us about your GlowUp experience..."  
+        required  
+      ></textarea>  
+
+    </div>  
+
+
+    <button  
+      type="submit"  
+      class="btn submit-review"  
+      id="submitReview"  
+    >  
+      Submit Review +  
+    </button>  
+
+  </form>  
+
+</div>  
+
+
+<!-- ========================= -->  
+<!-- REVIEWS -->  
+<!-- ========================= -->  
+
+<div  
+  class="services-grid"  
+  id="reviewsContainer"  
+  style="grid-template-columns:repeat(3,1fr);"  
+>  
+
+  <div class="reviews-loading">  
+    Loading reviews...  
+  </div>  
+
 </div>
 
-<div class="wrap">
-  <section style="padding-top:0;">
-    <div class="services-grid" style="grid-template-columns:repeat(3,1fr);">
-      <div class="review-card" style="background:#fff;">
-        <div class="stars" style="color:#c98a6b;">★★★★★</div>
-        <p style="color:#5c4f47;">"The best nail tech in town! My nails have never looked this good."</p>
-        <div class="who" style="color:#7a6a61;">Tracy W.</div>
-      </div>
-      <div class="review-card" style="background:#fff;">
-        <div class="stars" style="color:#c98a6b;">★★★★★</div>
-        <p style="color:#5c4f47;">"Clean, professional and the vibe is everything. GlowUp is home now!"</p>
-        <div class="who" style="color:#7a6a61;">Sheila M.</div>
-      </div>
-      <div class="review-card" style="background:#fff;">
-        <div class="stars" style="color:#c98a6b;">★★★★★</div>
-        <p style="color:#5c4f47;">"Booking was so easy and the results speak for themselves."</p>
-        <div class="who" style="color:#7a6a61;">Amara K.</div>
-      </div>
-      <div class="review-card" style="background:#fff;">
-        <div class="stars" style="color:#c98a6b;">★★★★★</div>
-        <p style="color:#5c4f47;">"My go-to spot for lashes. Always flawless, always on time."</p>
-        <div class="who" style="color:#7a6a61;">Naliaka O.</div>
-      </div>
-      <div class="review-card" style="background:#fff;">
-        <div class="stars" style="color:#c98a6b;">★★★★★</div>
-        <p style="color:#5c4f47;">"The whole experience feels like a treat. Highly recommend."</p>
-        <div class="who" style="color:#7a6a61;">Brenda N.</div>
-      </div>
-      <div class="review-card" style="background:#fff;">
-        <div class="stars" style="color:#c98a6b;">★★★★★</div>
-        <p style="color:#5c4f47;">"Attention to detail is unmatched. Worth every shilling."</p>
-        <div class="who" style="color:#7a6a61;">Faith M.</div>
-      </div>
-    </div>
-  </section>
-</div>
+  </section>  </div>  <footer>   
+    <footer>    <p class="script">  
+    self care isn't selfish,  
+  </p>    <h2>  
+    it's necessary.  
+  </h2>    <p>  
+    We can't wait to be part of your glow journey.  
+  </p>    <div class="footer-socials">  <!-- Instagram -->  
 
-<footer>
-  <p class="script">self care isn't selfish,</p>
-  <h2 style="font-size:1.8rem;">it's necessary.</h2>
-  <p>We can't wait to be part of your glow journey.</p>
-  <div class="socials">
-    <a href="#">IG</a>
-    <a href="#">TT</a>
-    <a href="#">WA</a>
+<a  
+  href="https://www.instagram.com/_mac.audi/"  
+  target="_blank"  
+  rel="noopener"  
+  aria-label="Instagram"  
+>  
+
+  <svg viewBox="0 0 24 24">  
+
+    <rect  
+      x="3"  
+      y="3"  
+      width="18"  
+      height="18"  
+      rx="5"  
+      fill="none"  
+      stroke="currentColor"  
+      stroke-width="1.5"  
+    />  
+
+    <circle  
+      cx="12"  
+      cy="12"  
+      r="4"  
+      fill="none"  
+      stroke="currentColor"  
+      stroke-width="1.5"  
+    />  
+
+    <circle  
+      cx="17.3"  
+      cy="6.7"  
+      r="1.1"  
+      fill="currentColor"  
+    />  
+
+  </svg>  
+
+</a>  
+
+
+<!-- WhatsApp -->  
+
+<a  
+  href="https://wa.me/254710868500"  
+  target="_blank"  
+  rel="noopener"  
+  aria-label="WhatsApp"  
+>  
+
+  <svg viewBox="0 0 24 24">  
+
+    <path  
+      fill="currentColor"  
+      d="M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3zm0 1.8a7.2 7.2 0 016 11.2l-.3.5.6 2.2-2.3-.6-.5.3A7.2 7.2 0 1112 4.8zm-3.4 3.6c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.1 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3l-1.8-.9c-.2-.1-.4-.1-.6.1l-.7.9c-.1.1-.3.2-.5.1-.3-.1-1.2-.5-2.2-1.4-.8-.7-1.3-1.6-1.5-1.9-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.5-.6-.5h-.2z"  
+    />  
+
+  </svg>  
+
+</a>  
+
+
+<!-- TikTok -->  
+
+<a  
+  href="https://www.tiktok.com/@_nailsLash"  
+  target="_blank"  
+  rel="noopener"  
+  aria-label="TikTok"  
+>  
+
+  <svg viewBox="0 0 24 24">  
+
+    <path  
+      fill="currentColor"  
+      d="M14 3h2.2c.2 1.5 1.3 2.7 3.1 2.9v2.2c-1.2 0-2.3-.4-3.1-1v6.6c0 2.9-2.3 5.3-5.3 5.3S5.6 16.6 5.6 13.7c0-2.7 2-4.9 4.6-5.2v2.3a2.9 2.9 0 102.9 2.9V3z"  
+    />  
+
+  </svg>  
+
+</a>
+
   </div>
-</footer>
-
-</body>
+  </footer> 
+   <script type="module">src="rev.js"</script>
+</body>  
 </html>
